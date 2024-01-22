@@ -1,5 +1,6 @@
 package com.jordan.travel.reservation;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,5 +37,10 @@ public class ReservationController {
     @PostMapping
     public Mono<Reservation> create(@RequestBody ReservationCreate dto) {
         return reservationService.save(dto);
+    }
+
+    @DeleteMapping("/{id}")
+    public Mono<Void> deleteById(@PathVariable Long id) {
+        return reservationService.deleteById(id);
     }
 }

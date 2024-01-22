@@ -27,4 +27,8 @@ public class ReservationService {
         return repository.findById(id).flatMap(r -> holidayService.getById(r.getHolidayId())
                 .map(location -> ReservationGet.fromReservation(r, location)));
     }
+
+    public Mono<Void> deleteById(Long id) {
+        return repository.deleteById(id);
+    }
 }

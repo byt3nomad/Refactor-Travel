@@ -1,7 +1,6 @@
 package com.jordan.travel.holiday;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jordan.travel.location.LocationService;
 

@@ -1,7 +1,6 @@
 package com.jordan.travel.holiday;
 
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.time.LocalDate;
 
 import org.springframework.data.annotation.Id;
