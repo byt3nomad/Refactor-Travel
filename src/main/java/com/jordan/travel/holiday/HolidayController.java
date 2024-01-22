@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.service.annotation.PutExchange;
 
@@ -31,14 +32,16 @@ public class HolidayController {
         return holidayService.save(holiday);
     }
 
-    @GetMapping
-    public Flux<HolidayGetDto> getAll() {
-        return holidayService.getAll();
-    }
-
     @GetMapping("/{id}")
     public Mono<HolidayGetDto> getById(@PathVariable Long id) {
         return holidayService.getById(id);
+    }
+
+    @GetMapping
+    public Flux<HolidayGetDto> getHolidays(
+            @RequestParam(name = "location", required = false) String locationName,
+            @RequestParam(name = "duration", required = false) Integer duration) {
+        return holidayService.findHolidays(locationName, duration);
     }
 
     @DeleteMapping("/{id}")
